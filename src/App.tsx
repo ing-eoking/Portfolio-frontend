@@ -165,10 +165,15 @@ const AboutSection = () => (
             </p>
             <p className="mb-4">
               C/C++ 기반의 로우 레벨 시스템부터 Python, Java를 활용한 웹 서비스까지
-              폭넓은 기술 스택을 보유하고 있습니다.
+              폭넓은 기술 스택을 고 있습니다.
             </p>
-            <p>
-              
+            <p className="mb-4">
+              메모리 관리, 동시성 처리, 네트워크 통신 등 시스템 개발에 강점을 가지고 있으며,
+              문제를 분석하고 안정적인 구조를 만드는 것을 중요하게 생각합니다.
+            </p>
+            <p className="mb-4">
+              <em className="text-gray-400">“Never lose a holy curiosity!”</em> 라는 마음으로,<br></br>
+              항상 더 나은 서비스를 만들어가는 개발자가 되고자 합니다.
             </p>
           </div>
         </div>
@@ -267,11 +272,34 @@ const ExperienceSection = () => (
             <div className="absolute -left-[9px] top-0 w-4 h-4 bg-[#38BDF8] rounded-full border-4 border-[#0B1121] shadow-[0_0_10px_#38BDF8]"></div>
             <h3 className="text-2xl font-bold text-white">잼투인 주식회사 (JaM2in)</h3>
             <p className="text-[#38BDF8] font-mono mb-4">2023.07 ~ 현재 | 서버 개발팀 (사원)</p>
-            <ul className="list-disc list-outside text-[#cbd5e1] space-y-2 ml-4">
-              <li><strong>Arcus (DB 캐시) 개발:</strong> </li>
-              <li><strong>Arcus C Client 개발:</strong> </li>
-              <li><strong>Arcus Perl Client 개발:</strong> </li>
-            </ul>
+            <ul className="list-disc list-outside text-[#cbd5e1] space-y-3 ml-5">
+            <li>
+              <span className="font-semibold text-white">
+                Arcus (DB 캐시) 개발
+              </span>
+              <p className="mt-1 text-sm leading-relaxed">
+                리팩토링 및 구조 개선 · 기능 설계 및 확장 · 버그 수정 및 안정화 · 테스트 개선
+              </p>
+            </li>
+
+            <li>
+              <span className="font-semibold text-white">
+                Arcus C Client Library 개발
+              </span>
+              <p className="mt-1 text-sm leading-relaxed">
+                라이브러리 내부 API 구조 개선 · 응답 메시지 예외 처리 강화
+              </p>
+            </li>
+
+            <li>
+              <span className="font-semibold text-white">
+                Arcus Perl Client Library 개발
+              </span>
+              <p className="mt-1 text-sm leading-relaxed">
+                Perl 기반 네트워크 라이브러리 설계 및 구현 · CPAN 기반 배포
+              </p>
+            </li>
+          </ul>
           </div>
         </div>
       </div>
