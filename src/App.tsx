@@ -61,7 +61,7 @@ const HeroSection = () => {
     if (!question.trim()) return;
     setLoading(true);
     try {
-      const url = import.meta.env.CHAT_SERVER_URL;
+      const url = import.meta.env.VITE_SERVER_URL;
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
