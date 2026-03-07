@@ -24,7 +24,7 @@ const Navbar = ({ activeSection }) => {
               onClick={() => scrollToSection('home')}
               className="text-xl font-bold text-[#38BDF8] cursor-pointer tracking-wider hover:text-white transition-colors"
           >
-            KYC.DEV
+            YCKIM.ME
           </div>
 
           <ul className="hidden md:flex gap-8">
@@ -160,21 +160,19 @@ const AboutSection = () => (
             </div>
           </div>
           <div className="leading-loose text-lg">
+            <em className="text-gray-400">“Never lose a holy curiosity!”</em>
             <p className="mb-4">
               안녕하세요, <strong className="text-white">백엔드 및 시스템 엔지니어 김연철</strong>입니다.
             </p>
             <p className="mb-4">
               C/C++ 기반의 로우 레벨 시스템부터 Python, Java를 활용한 웹 서비스까지
-              폭넓은 기술 스택을 고 있습니다.
+              폭넓은 기술 스택을 갖고 있습니다.
             </p>
             <p className="mb-4">
               메모리 관리, 동시성 처리, 네트워크 통신 등 시스템 개발에 강점을 가지고 있으며,
-              문제를 분석하고 안정적인 구조를 만드는 것을 중요하게 생각합니다.
+              항상 깊게 파고 들어 더 나은 서비스를 만들어가는 개발자를 꿈꾸고 있습니다. 
             </p>
-            <p className="mb-4">
-              <em className="text-gray-400">“Never lose a holy curiosity!”</em> 라는 마음으로,<br></br>
-              항상 더 나은 서비스를 만들어가는 개발자가 되고자 합니다.
-            </p>
+
           </div>
         </div>
       </div>
