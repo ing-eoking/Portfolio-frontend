@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react';
 
-const Robot = ({ isSearching }) => {
-    const leftPupilRef = useRef(null);
-    const rightPupilRef = useRef(null);
-    const leftHandRef = useRef(null);
-    const rightHandRef = useRef(null);
+const Robot = ({ isSearching }: any) => {
+    const leftPupilRef = useRef<any>(null);
+    const rightPupilRef = useRef<any>(null);
+    const leftHandRef = useRef<any>(null);
+    const rightHandRef = useRef<any>(null);
 
     useEffect(() => {
-        const handleMouseMove = (event) => {
+        const handleMouseMove = (event: any) => {
             if (isSearching) return;
 
             const { clientX, clientY } = event;
@@ -54,9 +54,9 @@ const Robot = ({ isSearching }) => {
 
             <div className={`absolute top-[0%] left-1/2 -translate-x-1/2 z-50 transition-all duration-300 origin-bottom ${isSearching ? 'opacity-100 scale-100' : 'opacity-0 scale-50 pointer-events-none'}`}>
                 <div className={isSearching ? 'bubble-float' : ''}>
-                    <div className="relative bg-[#38BDF8] text-[#020617] px-4 py-2 rounded-xl font-bold text-sm shadow-[0_0_20px_rgba(56,189,248,0.5)] whitespace-nowrap">
+                    <div className="relative bg-[#ff5e00] text-[#050505] px-4 py-2 rounded-xl font-bold text-sm shadow-[0_0_20px_rgba(255,94,0,0.5)] whitespace-nowrap">
                         DATA_#$#_FETCH
-                        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#38BDF8] rotate-45"></div>
+                        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#ff5e00] rotate-45"></div>
                     </div>
                 </div>
             </div>
@@ -83,8 +83,8 @@ const Robot = ({ isSearching }) => {
             >
 
                 <g>
-                    <circle ref={leftPupilRef} cx="87" cy="77" r="4" className={`transition-colors duration-300 ${isSearching ? 'fill-yellow-400' : 'fill-[#38BDF8]'}`} />
-                    <circle ref={rightPupilRef} cx="112" cy="77" r="4" className={`transition-colors duration-300 ${isSearching ? 'fill-yellow-400' : 'fill-[#38BDF8]'}`} />
+                    <circle ref={leftPupilRef} cx="87" cy="77" r="4" className={`transition-colors duration-300 ${isSearching ? 'fill-[#ff5e00] drop-shadow-[0_0_8px_rgba(255,94,0,0.9)]' : 'fill-[#ffff00] drop-shadow-[0_0_5px_rgba(255,255,0,0.8)]'}`} />
+                    <circle ref={rightPupilRef} cx="112" cy="77" r="4" className={`transition-colors duration-300 ${isSearching ? 'fill-[#ff5e00] drop-shadow-[0_0_8px_rgba(255,94,0,0.9)]' : 'fill-[#ffff00] drop-shadow-[0_0_5px_rgba(255,255,0,0.8)]'}`} />
                 </g>
 
                 <g>
