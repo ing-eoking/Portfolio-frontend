@@ -50,8 +50,12 @@ const Navbar = ({ activeSection, theme, toggleTheme }: any) => {
             </li>
           ))}
           <li>
-            <button onClick={toggleTheme} className="text-xl p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-[#222222] transition-colors">
-              {theme === 'dark' ? '☀️' : '🌙'}
+            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-[#222222] transition-colors flex items-center justify-center">
+              {theme === 'dark' ? (
+                <img src="/sun.png" alt="Dark Mode" className="w-6 h-6 object-contain" />
+              ) : (
+                <img src="/moon.png" alt="Light Mode" className="w-6 h-6 object-contain" />
+              )}
             </button>
           </li>
         </ul>
@@ -402,6 +406,7 @@ const SkillsSection = () => {
 
   const fetchGistData = async () => {
     setLoading(true);
+
     if (!GIST_URL) {
       console.error("GIST_URL is undefined.");
       setLoading(false);
@@ -459,9 +464,9 @@ const SkillsSection = () => {
         {loading && skills.length === 0 ? (
           <div className="text-center py-10 text-neutral-400 dark:text-[#777777] animate-pulse">GitHub 데이터 동기화 중...</div>
         ) : (
-          <div className="space-y-8">
+          <div className={`space-y-8 transition-all duration-1000 ease-in-out ${isVisible && !loading ? 'blur-none opacity-100' : 'blur-md opacity-30 pointer-events-none'}`}>
             {skills.map((skill, idx) => (
-              <AnimatedReveal key={skill.name} delay={idx * 100} direction="left" triggerOnce={false}>
+              <AnimatedReveal key={skill.name} delay={idx * 100} direction="left" triggerOnce={true}>
                 <div>
                   <div className="flex justify-between mb-2 text-neutral-800 dark:text-[#eeeeee] font-bold tracking-wider text-sm uppercase font-['Chakra_Petch']">
                     <span>{skill.name}</span>
@@ -537,6 +542,12 @@ const ProjectsSection = ({ onProjectClick }: { onProjectClick: (proj: any) => vo
       <AnimatedTitle>PROJECTS</AnimatedTitle>
       <div className="grid md:grid-cols-3 gap-6 auto-rows-fr">
         {[
+          {
+            title: "대화형 포트폴리오 서버",
+            period: "2024.12 ~ 현재 (개인)",
+            desc: "RAG 기반 지능형 포트폴리오 서버. 외부 API 장애 시 로컬 LLM으로 전환되는 안정적인 하이브리드 아키텍처 구현.",
+            tags: "Java 25 / Spring Boot / Spring AI / Qdrant"
+          },
           {
             title: "자율 객체 추적 기기",
             period: "2022.08 ~ 2022.11 (개인)",
