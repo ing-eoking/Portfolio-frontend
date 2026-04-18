@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
 import Robot from './Robot';
 
 const Navbar = ({ activeSection, theme, toggleTheme }: any) => {
+  const [isOpen, setIsOpen] = useState(false);
   const navLinks = [
     { id: 'home', label: '$HOME' },
     { id: 'about', label: '$ABOUT' },
@@ -11,6 +13,7 @@ const Navbar = ({ activeSection, theme, toggleTheme }: any) => {
   ];
 
   const scrollToSection = (id: string) => {
+    setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -19,10 +22,10 @@ const Navbar = ({ activeSection, theme, toggleTheme }: any) => {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0c]/80 backdrop-blur-md border-b border-neutral-200 dark:border-[#222222] transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative gap-4">
         <div
           onClick={() => scrollToSection('home')}
-          className="cursor-pointer group flex items-center justify-center gap-3 p-1"
+          className="cursor-pointer group flex items-center justify-center gap-3 p-1 shrink-0"
           title="Home"
         >
           <img
@@ -35,7 +38,16 @@ const Navbar = ({ activeSection, theme, toggleTheme }: any) => {
           </span>
         </div>
 
-        <ul className="hidden md:flex gap-8 items-center">
+        <button 
+          className="md:hidden text-neutral-900 dark:text-white p-2 shrink-0 ml-auto" 
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+            <path strokeLinecap="round" strokeLinejoin="round" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
+          </svg>
+        </button>
+
+        <ul className={`${isOpen ? 'flex' : 'hidden'} md:flex absolute md:relative top-full left-0 w-full md:w-auto bg-white/95 dark:bg-[#0a0a0c]/95 md:bg-transparent md:dark:bg-transparent backdrop-blur-md md:backdrop-blur-none flex-col md:flex-row gap-6 md:gap-8 items-center py-6 md:py-0 border-b md:border-none border-neutral-200 dark:border-[#222222] shadow-xl md:shadow-none`}>
           {navLinks.map((link: any) => (
             <li key={link.id}>
               <button
@@ -50,7 +62,7 @@ const Navbar = ({ activeSection, theme, toggleTheme }: any) => {
             </li>
           ))}
           <li>
-            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-[#222222] transition-colors flex items-center justify-center">
+            <button onClick={toggleTheme} className="p-2 w-10 h-10 rounded-full hover:bg-neutral-200 dark:hover:bg-[#222222] transition-colors flex items-center justify-center -ml-2 md:ml-0">
               {theme === 'dark' ? (
                 <img src="/sun.png" alt="Dark Mode" className="w-6 h-6 object-contain" />
               ) : (
@@ -215,9 +227,13 @@ const HeroSection = () => {
               <div className="bg-white dark:bg-[#111111] border border-[#ff5e00]/20 p-5 rounded-lg shadow-xl text-left relative">
                 <div className="flex gap-4">
                   <div className="shrink-0 min-w-[32px] h-8 rounded bg-[#ff5e00] flex items-center justify-center text-[#050505] text-xs font-bold shadow-lg">AI</div>
-                  <div className="text-neutral-800 dark:text-[#eeeeee] text-sm leading-relaxed whitespace-pre-wrap max-h-60 overflow-y-auto pr-2
+                  <div className="text-neutral-800 dark:text-[#eeeeee] text-sm leading-relaxed max-h-60 overflow-y-auto pr-2
                         [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#333333] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:hover:bg-[#ff5e00]">
-                    {answer}
+                    <div className="space-y-4 [&_p]:whitespace-pre-wrap [&_strong]:font-bold [&_strong]:text-[#ff5e00] [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_a]:text-blue-500 [&_code]:bg-neutral-200 dark:[&_code]:bg-[#222] [&_code]:text-[#ff5e00] [&_code]:px-1 [&_code]:rounded">
+                      <ReactMarkdown>
+                        {answer}
+                      </ReactMarkdown>
+                    </div>
                   </div>
                 </div>
               </div>
