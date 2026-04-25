@@ -82,7 +82,14 @@ const HeroSection = () => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
-  const [sessionId] = useState(() => 'session-' + Math.random().toString(36).substr(2, 9));
+  const [sessionId] = useState(() => {
+    let id = sessionStorage.getItem('chatSessionId');
+    if (!id) {
+      id = 'session-' + Math.random().toString(36).substr(2, 9);
+      sessionStorage.setItem('chatSessionId', id);
+    }
+    return id;
+  });
 
   const [phase, setPhase] = useState(0);
   const [typedTitle, setTypedTitle] = useState('');
